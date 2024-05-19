@@ -1,0 +1,41 @@
+input, select {
+  &.text {
+    width: 100%;
+    // margin: 8px 0px;
+    padding: 16px 24px;
+    border: 1px solid #EBEBEB;
+    margin: 16px;
+    background-color: #EBEBEB;
+  }
+  &.submit{
+    width: 100%;
+    // margin: auto;
+    position: absolute;
+    top: 800px;
+    height: 56px;
+    // left: 30px;
+    // bottom: 32px;
+    // margin:0 30px;
+    padding: 12px;
+    background-color:#fcd703 ;
+
+  }
+}
+.form_title{
+  margin: 16px;
+
+}
+
+label {
+  font-size: 12px;
+  margin: 16px;
+}
+
+textarea {
+  width: 100%;
+  margin: 8px 0px;
+  padding: 8px 8px;
+  min-height: 440px;
+  resize: vertical;
+  border: 1px solid #EBEBEB;
+}
