@@ -1,4 +1,4 @@
-!!!
+
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
@@ -9,4 +9,7 @@
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    .header 
+      %p.headertitle Boards 
+      =image_tag "default-avatar.png",class: "avatar_picture"
     = yield
