@@ -1,10 +1,19 @@
 .container 
   %h1 All Boards
+  =link_to 'new', new_board_path
   - @boards.each do |board|
     .board 
-      .title 
-        = board.title 
+      .board_top
+        .title 
+          = board.title 
+        .menu 
+          =image_tag "image.png"
+            
       .content 
         = board.content 
-      .user 
-        = board.user
+    
+      
+  .new_board 
+    = link_to new_board_path do
+      %h3 +Add new board
+    

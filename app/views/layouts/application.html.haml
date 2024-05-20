@@ -12,4 +12,10 @@
     .header 
       %p.headertitle Boards 
       =image_tag "default-avatar.png",class: "avatar_picture"
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          %div{:class => key}
+            = value
+
     = yield
