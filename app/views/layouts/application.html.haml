@@ -1,21 +1,22 @@
-
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title TodoApp
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
-    .header 
-      %p.headertitle Boards 
-      =image_tag "default-avatar.png",class: "avatar_picture"
+    .header
+      = link_to boards_path do
+        %p.headertitle Boards
+      = image_tag "default-avatar.png", class: "avatar_picture"
     - if flash.present?
       .flash
         - flash.each do |key, value|
-          %div{:class => key}
+          %div{class: key}
             = value
 
     = yield
+

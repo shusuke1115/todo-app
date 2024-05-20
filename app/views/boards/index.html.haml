@@ -1,19 +1,26 @@
 .container 
   %h1 All Boards
-  =link_to 'new', new_board_path
+
   - @boards.each do |board|
     .board 
       .board_top
         .title 
           = board.title 
         .menu 
-          =image_tag "image.png"
-            
+          - if user_signed_in? && current_user.id == board.user_id
+            .board_detail_actions
+              = image_tag 'image.png', class: 'dropbtn'
+              %ul.dropdown-lists
+                %li.dropdown_list
+                  = link_to 'edit', edit_board_path(board)
+                %li.dropdown_list
+                  = link_to 'delete', board_path(board), data: { method: :delete, confirm: "本当に削除しますか？" }
+      
       .content 
         = board.content 
-    
-      
+
   .new_board 
     = link_to new_board_path do
       %h3 +Add new board
+
     

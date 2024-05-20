@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   def index
-    @boards = Board.all
+    @boards = Board.order(id: :asc)
   end
   def show
     @board = Board.find(params[:id])
@@ -19,6 +19,26 @@ class BoardsController < ApplicationController
       render :new
     end
   end
+
+  def edit
+    @board = Board.find(params[:id])
+  end
+
+  def update
+    @board = current_user.boards.find(params[:id]) #①変数に更新したいレコード情報を代入
+    if @board.update(board_params)
+    else
+      flash.now[:error] = '更新に失敗'
+      render 'edit'
+    end
+
+    def destroy
+      board = current_user.boards.find(params[:id])
+      board.destroy!
+      redirect_to boards_path, notice: 'delete'
+    end
+  end
+
   private
     def board_params
       params.require(:board).permit(:title, :content)
