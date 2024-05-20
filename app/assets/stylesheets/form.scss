@@ -7,6 +7,8 @@ input, select {
     margin: 16px;
     background-color: #EBEBEB;
   }
+
+ 
   &.submit{
     width: 100%;
     // margin: auto;
@@ -33,9 +35,10 @@ label {
 
 textarea {
   width: 100%;
-  margin: 8px 0px;
+  margin: 16px;
   padding: 8px 8px;
   min-height: 440px;
+  background-color: #EBEBEB;
   resize: vertical;
   border: 1px solid #EBEBEB;
 }
