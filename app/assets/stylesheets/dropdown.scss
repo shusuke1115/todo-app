@@ -1,9 +1,9 @@
-.board_detail_actions {
+.board_detail_actions,.task_detail_actions {
   position: relative;
   display: inline-block;
 }
 
-.board_detail_actions .dropbtn {
+.board_detail_actions,.task_detail_actions.dropbtn {
   cursor: pointer;
 }
 
@@ -29,5 +29,8 @@
 }
 
 .board_detail_actions:hover .dropdown-lists {
+  display: block;
+}
+.task_detail_actions:hover .dropdown-lists {
   display: block;
 }

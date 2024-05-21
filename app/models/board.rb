@@ -15,6 +15,7 @@
 #
 class Board < ApplicationRecord
   belongs_to :user
+  has_many :tasks
   validates :title, presence: true, length: { maximum: 30 }, length: {minimum:6}
   validates :content, presence: true, length: { maximum: 150 }, length: {minimum:40}
 end

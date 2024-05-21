@@ -1,0 +1,12 @@
+= form_with(model: @task,url: board_tasks_path, local: true) do |f|
+  .task_title 
+    = f.label :title, class: 'control_label'
+    = f.text_field :title, class: 'text'
+  .task_content
+    = f.label :content, class: 'control_label'
+    = f.text_area :content, class: 'content'
+  .task_limit 
+    = f.label :limit, class: 'control_label'
+    = f.date_select :limit, class: 'date'
+  .actions
+    = f.submit "Submit", class: 'submit'

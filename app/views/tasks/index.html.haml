@@ -1,0 +1,24 @@
+.container 
+  %h1 All Tasks
+
+- @tasks.each do |task|
+  .task 
+    .task_top
+      .title 
+        = task.title 
+      .menu 
+        - if user_signed_in? && current_user.id == task.user_id
+          .task_detail_actions
+            = image_tag 'image.png', class: 'dropbtn'
+            %ul.dropdown-lists
+              %li.dropdown_list
+                = link_to 'edit', edit_board_task_path(task.board_id, task)
+              %li.dropdown_list
+                = link_to 'delete', board_task_path(task.board_id, task), data: { method: :delete, confirm: "本当に削除しますか？" }
+
+    .content 
+      = task.content 
+
+.new_task 
+  = link_to new_board_task_path do
+    %h3 +Add new task
