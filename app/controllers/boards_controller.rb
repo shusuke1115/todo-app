@@ -31,13 +31,14 @@ class BoardsController < ApplicationController
       flash.now[:error] = '更新に失敗'
       render 'edit'
     end
-
-    def destroy
-      board = current_user.boards.find(params[:id])
-      board.destroy!
-      redirect_to boards_path, notice: 'delete'
-    end
   end
+
+  def destroy
+    board = current_user.boards.find(params[:id])
+    board.destroy!
+    redirect_to boards_path, notice: 'delete'
+  end
+  
 
   private
     def board_params
