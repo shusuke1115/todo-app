@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   def index
     @tasks = Task.where(board_id: params[:board_id])
+    @board = Board.find(params[:board_id])
   end
 
   def new
@@ -20,16 +21,36 @@ class TasksController < ApplicationController
     end
   end
 
+  def show
+    board = Board.find(params[:board_id])
+    @task = board.tasks.find_by(user_id: board.user_id)
+  end
+
   def edit
+    board = Board.find(params[:board_id])
+    @task = board.tasks.find_by(user_id: board.user_id)
   end
 
   def update
+    board = Board.find(params[:board_id])
+    @task = board.tasks.find_by(user_id: board.user_id)
+    if @task.update(task_params)
+      redirect_to board_tasks_path, notice: 'Task is update'
+    else
+      flash.now[:error] = '更新に失敗'
+      render 'edit'
+    end
   end
+
   def destroy
+    board = Board.find(params[:board_id])
+    task = board.tasks.find_by(user_id: board.user_id)
+    task.destroy!
+    redirect_to board_tasks_path, notice: 'delete'
   end
 
   private
     def task_params
-      params.require(:task).permit(:title, :content, :limit)
+      params.require(:task).permit(:title, :content, :limit, :image)
     end
 end

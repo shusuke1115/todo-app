@@ -8,26 +8,32 @@ a{
 }
 
 .board,.task{
-  width: 70%;
-    // margin: 8px 0px;
-    padding: 16px 16px;
-    border: 1px solid #EBEBEB;
-    margin: 16px;
-    background-color: #EBEBEB;
+  width: 80%;
+  padding: 16px 16px;
+  border: 1px solid #ebebeb00;
+  margin: 16px;
+  background-color: #EBEBEB;
+  border-radius: 5%;
+
+  .task_image img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
     border-radius: 5%;
+  }
 
-    .board_top,.task_top{
-      display: flex;
-      justify-content: space-between;
+  .board_top,.task_top{
+    display: flex;
+    justify-content: space-between;
 
 
-      .menu{
-        margin-top: 5px;
-      }
+    .menu{
+      margin-top: 30px;
     }
+  }
 }
 .new_board,.new_task {
-  width: 70%;
+  width: 80%;
   margin: 16px;
   border: 1px dashed #EBEBEB;
   padding: 32px;

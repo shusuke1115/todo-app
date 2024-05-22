@@ -27,6 +27,7 @@ class BoardsController < ApplicationController
   def update
     @board = current_user.boards.find(params[:id]) #①変数に更新したいレコード情報を代入
     if @board.update(board_params)
+      redirect_to boards_path, notice: 'Board is update'
     else
       flash.now[:error] = '更新に失敗'
       render 'edit'

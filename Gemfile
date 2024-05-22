@@ -25,6 +25,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'faker'
 gem 'hamlit'
 gem 'annotate'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

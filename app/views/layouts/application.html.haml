@@ -11,6 +11,10 @@
     .header
       = link_to boards_path do
         %p.headertitle Boards
+      - if user_signed_in?
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-link'
+      - else 
+        = link_to 'ログイン', new_user_session_path, class: 'login-link'
       = image_tag "default-avatar.png", class: "avatar_picture"
     - if flash.present?
       .flash

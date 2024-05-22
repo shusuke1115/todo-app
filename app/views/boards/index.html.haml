@@ -1,11 +1,11 @@
 .container 
   %h1 All Boards
   - @boards.each do |board|
-    = link_to board_tasks_path(board) do
-      .board 
+    .board
+      = link_to board_tasks_path(board) do
         .board_top
           .title 
-            = board.title 
+            %h3 #{board.title}
           .menu 
             - if user_signed_in? && current_user.id == board.user_id
               .board_detail_actions

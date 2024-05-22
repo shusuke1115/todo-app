@@ -7,6 +7,33 @@
     // padding:10px ;
     font-weight: bold;
   }
+  .logout-link {
+    color: red;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: red;
+      color: white;
+    }
+  }
+  
+  .login-link {
+    color: green;
+    text-decoration: none;
+    padding: 10px;
+    border: 1px solid green;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  
+    &:hover {
+      background-color: green;
+      color: white;
+    }
+  }
 
   .avatar_picture{
     width: 48px;

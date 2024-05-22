@@ -1,0 +1,45 @@
+.container 
+  .show_header
+    %h1 #{@task.title}
+    .menu 
+      - if user_signed_in? && current_user.id == @task.user_id
+        .task_detail_actions
+          = image_tag 'image.png', class: 'dropbtn'
+          %ul.dropdown-lists
+            %li.dropdown_list
+              = link_to 'edit', edit_board_task_path(@task.board_id, @task)
+            %li.dropdown_list
+              = link_to 'delete', board_task_path(@task.board_id, @task), data: { method: :delete, confirm: "本当に削除しますか？" }
+  - if @task.image.present?
+    .task_image_show
+      = image_tag attachment_url(@task, :image)
+  .content_show
+    = @task.content
+    .limit 
+      %p 締め切り日 #{@task.limit}
+      %p #{@task.rest_time}
+  .comment 
+    %p Comment
+
+
+  -# .task 
+  -#   .task_image 
+  -#     - if @task.image.present?
+  -#       = image_tag attachment_url(@task, :image)
+  -#   .task_top
+  -#     .title 
+  -#       %h3  #{@task.title }
+  -#     .menu 
+  -#       - if user_signed_in? && current_user.id == @task.user_id
+  -#         .task_detail_actions
+  -#           = image_tag 'image.png', class: 'dropbtn'
+  -#           %ul.dropdown-lists
+  -#             %li.dropdown_list
+  -#               = link_to 'edit', edit_board_task_path(@task.board_id, @task)
+  -#             %li.dropdown_list
+  -#               = link_to 'delete', board_task_path(@task.board_id, @task), data: { method: :delete, confirm: "本当に削除しますか？" }
+  -#   .content 
+  -#     = @task.content 
+  -#   .limit 
+  -#     %p 締め切り日 #{@task.limit}
+  -#     %p #{@task.rest_time}
