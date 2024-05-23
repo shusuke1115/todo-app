@@ -1,0 +1,27 @@
+.container
+  %h1 
+    = @profile.nickname 
+    のProfile
+  %p.profile_nickname
+    nickname:
+    = @profile.nickname
+  %p.profile_image_show
+    character image
+    %br
+    - if user_signed_in? && @user.profile.present? && @user.profile.user_image.attached?
+      = image_tag @user.profile.user_image, class: "avatar_picture",size:  "100x100"
+    - else
+      = image_tag "default-avatar.png", class: "avatar_picture", size:  "100x100"
+  %p.profile_age
+    age: 
+    = @profile.age
+  %p.profile_birthday
+    date_of_birth:
+    = @profile.birthday
+  %p.profile_gender
+    gender: 
+    = @profile.gender
+
+  - if @profile.user_id == current_user.id
+    .edit_profile
+      = link_to 'Edit', edit_user_profile_path(current_user)

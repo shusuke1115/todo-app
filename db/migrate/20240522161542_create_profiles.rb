@@ -1,6 +1,6 @@
-class CreateDetailUsers < ActiveRecord::Migration[6.1]
+class CreateProfiles < ActiveRecord::Migration[6.1]
   def change
-    create_table :profile do |t|
+    create_table :profiles do |t|
       t.string :nickname
       t.date :birthday
       t.integer :age
@@ -10,4 +10,3 @@ class CreateDetailUsers < ActiveRecord::Migration[6.1]
     end
   end
 end
-
