@@ -1,6 +1,6 @@
 .container 
   .show_header
-    %h1 #{@task.title}
+    %h1= @task.title
     .menu 
       - if user_signed_in? && current_user.id == @task.user_id
         .task_detail_actions
@@ -23,19 +23,20 @@
           = image_tag user.profile.user_image, class: "avatar_picture",size:  "100x100"
         - else
           = image_tag "default-avatar.png", class: "avatar_picture", size:  "100x100"
-  .comments
-    %h3 Comments 
-    - @comments.each do |comment|
-      .comment
-        .comment_content
-          = comment.content
-        .commenter 
-          - commenter = User.find(comment.user_id)
-          = link_to user_profile_path(commenter) do
-            - if commenter.profile.present? && commenter.profile.user_image.attached?
-              = image_tag commenter.profile.user_image, class: "avatar_picture", size: "50x50"
-            - else
-              = image_tag "default-avatar.png", class: "avatar_picture", size: "50x50"
+  - if Comment.where(task_id: @task.id).exists?
+    .comments
+      %h3 Comments 
+      - @comments.each do |comment|
+        .comment
+          .comment_content
+            = comment.content
+          .commenter 
+            - commenter = User.find(comment.user_id)
+            = link_to user_profile_path(commenter) do
+              - if commenter.profile.present? && commenter.profile.user_image.attached?
+                = image_tag commenter.profile.user_image, class: "avatar_picture", size: "50x50"
+              - else
+                = image_tag "default-avatar.png", class: "avatar_picture", size: "50x50"
 
   .new_comment 
     = link_to  new_task_comment_path(@task) do

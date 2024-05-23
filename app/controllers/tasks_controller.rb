@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
-
   before_action :authenticate_user!
-  
+
   def index
     @tasks = Task.where(board_id: params[:board_id])
     @board = Board.find(params[:board_id])
@@ -26,18 +25,20 @@ class TasksController < ApplicationController
 
   def show
     board = Board.find(params[:board_id])
-    @task = board.tasks.find_by(user_id: board.user_id)
-    @comments = Comment.where(task_id: @task.id)
+    @task = board.tasks.find(params[:id])
+    if Comment.where(task_id: @task.id).exists?
+      @comments = Comment.where(task_id: @task.id)
+    end
   end
 
   def edit
     board = Board.find(params[:board_id])
-    @task = board.tasks.find_by(user_id: board.user_id)
+    @task = board.tasks.find(params[:id])
   end
 
   def update
     board = Board.find(params[:board_id])
-    @task = board.tasks.find_by(user_id: board.user_id)
+    @task = board.tasks.find(params[:id])
     if @task.update(task_params)
       redirect_to board_tasks_path, notice: 'Task is update'
     else
@@ -48,13 +49,14 @@ class TasksController < ApplicationController
 
   def destroy
     board = Board.find(params[:board_id])
-    task = board.tasks.find_by(user_id: board.user_id)
+    task = board.tasks.find(parmas[:id])
     task.destroy!
     redirect_to board_tasks_path, notice: 'delete'
   end
 
   private
-    def task_params
-      params.require(:task).permit(:title, :content, :limit, :image)
-    end
+
+  def task_params
+    params.require(:task).permit(:title, :content, :limit, :image)
+  end
 end
