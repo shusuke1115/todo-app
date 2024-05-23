@@ -23,28 +23,28 @@
           = image_tag user.profile.user_image, class: "avatar_picture",size:  "100x100"
         - else
           = image_tag "default-avatar.png", class: "avatar_picture", size:  "100x100"
-  .comment 
-    %p Comment
+  .comments
+    %h3 Comments 
+    - @comments.each do |comment|
+      .comment
+        .comment_content
+          = comment.content
+        .commenter 
+          - commenter = User.find(comment.user_id)
+          = link_to user_profile_path(commenter) do
+            - if commenter.profile.present? && commenter.profile.user_image.attached?
+              = image_tag commenter.profile.user_image, class: "avatar_picture", size: "50x50"
+            - else
+              = image_tag "default-avatar.png", class: "avatar_picture", size: "50x50"
+
+  .new_comment 
+    = link_to  new_task_comment_path(@task) do
+      %h3 +Add new comment
 
 
-  -# .task 
-  -#   .task_image 
-  -#     - if @task.image.present?
-  -#       = image_tag attachment_url(@task, :image)
-  -#   .task_top
-  -#     .title 
-  -#       %h3  #{@task.title }
-  -#     .menu 
-  -#       - if user_signed_in? && current_user.id == @task.user_id
-  -#         .task_detail_actions
-  -#           = image_tag 'image.png', class: 'dropbtn'
-  -#           %ul.dropdown-lists
-  -#             %li.dropdown_list
-  -#               = link_to 'edit', edit_board_task_path(@task.board_id, @task)
-  -#             %li.dropdown_list
-  -#               = link_to 'delete', board_task_path(@task.board_id, @task), data: { method: :delete, confirm: "本当に削除しますか？" }
-  -#   .content 
-  -#     = @task.content 
-  -#   .limit 
-  -#     %p 締め切り日 #{@task.limit}
-  -#     %p #{@task.rest_time}
+      
+
+
+
+
+

@@ -37,10 +37,11 @@ a{
     justify-content: space-between;
   }
 }
-.new_board,.new_task {
+.new_board,.new_task ,.new_comment{
   width: 80%;
   margin: 16px;
   border: 1px dashed #EBEBEB;
   padding: 32px;
   border-radius: 5%;
+  
 }

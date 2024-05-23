@@ -1,4 +1,7 @@
 class TasksController < ApplicationController
+
+  before_action :authenticate_user!
+  
   def index
     @tasks = Task.where(board_id: params[:board_id])
     @board = Board.find(params[:board_id])
@@ -24,6 +27,7 @@ class TasksController < ApplicationController
   def show
     board = Board.find(params[:board_id])
     @task = board.tasks.find_by(user_id: board.user_id)
+    @comments = Comment.where(task_id: @task.id)
   end
 
   def edit

@@ -20,6 +20,7 @@
 class Task < ApplicationRecord
   belongs_to :user
   belongs_to :board
+  has_many :comments, dependent: :destroy
   attachment :image
   validates :title, presence: true, length: { minimum: 4, maximum: 40 }
   validates :content, presence: true, length: { minimum: 10 }

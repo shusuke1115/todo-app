@@ -16,6 +16,8 @@ class ProfilesController < ApplicationController
   #   end
   # end
 
+  before_action :authenticate_user!
+
   def edit
     @profile = current_user.profile || current_user.build_profile
   end
