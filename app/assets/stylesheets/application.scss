@@ -1,0 +1,14 @@
+@import 'header';
+@import 'form';
+@import 'common';
+@import 'flash';
+@import 'dropdown';
+@import 'task_show';
+@import 'profile';
+@import 'comment';
+
+.container {
+  padding: 16px 16px;
+  width: 100%;
+  position: relative;
+}

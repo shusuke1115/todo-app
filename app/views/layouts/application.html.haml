@@ -1,12 +1,41 @@
-!!!
 %html
   %head
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{content: "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title TodoApp
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %meta{content: "width=device-width,initial-scale=1", name: "viewport"}/
     = csrf_meta_tags
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    %link{ href: "https://use.fontawesome.com/releases/v6.0.0/css/all.css", rel: "stylesheet" }
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
   %body
+    .header
+      = link_to :back do
+        %i.fa.fa-arrow-left{ aria: { hidden: true } }
+      = link_to boards_path do
+        %p.headertitle Boards
+      - if user_signed_in?
+        = link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'logout-link'
+      - else 
+        = link_to 'ログイン', new_user_session_path, class: 'login-link'
+      - if user_signed_in? && current_user.profile.present?
+        = link_to user_profile_path(current_user) do
+          - if current_user.profile.user_image.attached?
+            = image_tag current_user.profile.user_image, class: "avatar_picture"
+          - else
+            = image_tag "default-avatar.png", class: "avatar_picture"
+      - elsif user_signed_in?
+        = link_to edit_user_profile_path(current_user) do
+          = image_tag 'default-avatar.png', class: "avatar_picture"
+      -else
+        = link_to new_user_session_path do
+          =  image_tag 'default-avatar.png', class: "avatar_picture"
+
+    - if flash.present?
+      .flash
+        - flash.each do |key, value|
+          .alert{ class: "alert-#{key}" }
+            = value
+
     = yield
+

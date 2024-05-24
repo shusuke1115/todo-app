@@ -1,0 +1,5 @@
+- if defined?(model) && model.errors.any?
+  .alert.alert-warning
+    %ul
+      - model.errors.full_messages.each do |message|
+        %li= message

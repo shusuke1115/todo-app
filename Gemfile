@@ -25,9 +25,11 @@ gem 'jbuilder', '~> 2.7'
 gem 'faker'
 gem 'hamlit'
 gem 'annotate'
+gem "refile", require: "refile/rails", github: 'manfe/refile'
+gem "refile-mini_magick"
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
-
+gem 'enum_help'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
@@ -36,6 +38,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
   gem 'rubocop-rails'
+  gem 'rails-i18n'
 end
 
 group :development do
