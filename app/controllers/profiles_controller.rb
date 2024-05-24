@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
   def destroy
     @profile = current_user.profile
     @profile.destroy
-    redirect_to root_path, notice: 'Profile was successfully destroyed.'
+    redirect_to root_path, notice: '削除しました'
   end
 
   private

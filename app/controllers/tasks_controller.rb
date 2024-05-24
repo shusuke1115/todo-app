@@ -16,7 +16,7 @@ class TasksController < ApplicationController
     @task = board.tasks.build(task_params)
     @task.user_id = current_user.id  
     if @task.save
-      redirect_to board_tasks_path, notice: 'Task is create'
+      redirect_to board_tasks_path, notice: '作成できたよ'
     else
       flash.now[:error] = '保存に失敗'
       render :new
@@ -40,7 +40,7 @@ class TasksController < ApplicationController
     board = Board.find(params[:board_id])
     @task = board.tasks.find(params[:id])
     if @task.update(task_params)
-      redirect_to board_tasks_path, notice: 'Task is update'
+      redirect_to board_tasks_path, notice: '更新成功!'
     else
       flash.now[:error] = '更新に失敗'
       render 'edit'
@@ -51,7 +51,7 @@ class TasksController < ApplicationController
     board = Board.find(params[:board_id])
     task = board.tasks.find(parmas[:id])
     task.destroy!
-    redirect_to board_tasks_path, notice: 'delete'
+    redirect_to board_tasks_path, notice: '削除しました'
   end
 
   private

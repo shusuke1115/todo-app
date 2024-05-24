@@ -9,7 +9,7 @@
             %li.dropdown_list
               = link_to 'edit', edit_board_task_path(@task.board_id, @task)
             %li.dropdown_list
-              = link_to 'delete', board_task_path(@task.board_id, @task), data: { method: :delete, confirm: "本当に削除しますか？" }
+              = link_to 'delete', board_task_path(@task.board_id, @task), data: { method: :delete, confirm: "本当に削除しますか?" }
   .content_show
     = @task.content
     .limit 
@@ -37,6 +37,9 @@
                 = image_tag commenter.profile.user_image, class: "avatar_picture", size: "50x50"
               - else
                 = image_tag "default-avatar.png", class: "avatar_picture", size: "50x50"
+            - if commenter.id == current_user.id 
+              = link_to task_comment_path(@task.id, comment),data:{method: :delete, confirm: '本当に削除しますか?' } do
+                %i.fa.fa-trash{ aria: { hidden: "true" } }
 
   .new_comment 
     = link_to  new_task_comment_path(@task) do

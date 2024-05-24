@@ -1,10 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  
-  def index
-    @task = Task.find(id: params[:task_id])
-    @comments = Comments.where(task_id: @task.id)
-  end
+
 
   def new
     @comment = current_user.comments.build(task_id: params[:task_id])
@@ -23,6 +19,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    task = Task.find(params[:task_id])
+    comment = Comment.find(params[:id])
+    comment.destroy!
+    redirect_to board_task_path(task.board_id, task),notice: '削除しました'
   end
 
   private
