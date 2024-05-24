@@ -1,0 +1,31 @@
+.comments{
+  margin: 16px;
+  
+
+  .comment{
+    // position: relative;
+    display: flex;
+    border: 1px,solid,#EBEBEB;
+    border-radius: 5px;
+    justify-content: space-between;
+    margin-top:32px ;
+    margin-bottom: 32px;
+    
+    padding: 16px;
+    width: 90%;
+
+    .comment_content{
+      font-size: 16px;
+    }
+
+    .commenter{
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+    }
+
+    
+    
+  }
+}
+

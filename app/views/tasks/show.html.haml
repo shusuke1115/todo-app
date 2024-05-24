@@ -1,0 +1,57 @@
+.container 
+  .show_header
+    %h1= @task.title
+    .menu 
+      - if user_signed_in? && current_user.id == @task.user_id
+        .task_detail_actions
+          = image_tag 'image.png', class: 'dropbtn'
+          %ul.dropdown-lists
+            %li.dropdown_list
+              = link_to 'edit', edit_board_task_path(@task.board_id, @task)
+            %li.dropdown_list
+              = link_to 'delete', board_task_path(@task.board_id, @task), data: { method: :delete, confirm: "本当に削除しますか?" }
+  .content_show
+    .task_image 
+      - if @task.image_id.present?
+        = image_tag attachment_url(@task, :image)
+    = @task.content
+    .limit 
+      %p 締め切り日 #{@task.limit}
+      %p #{@task.rest_time}
+    .creater 
+      %p Created By 
+      - user = User.find_by(id: @task.user_id)
+      = link_to user_profile_path(user) do
+        - if user.profile.present? && user.profile.user_image.attached?
+          = image_tag user.profile.user_image, class: "avatar_picture",size:  "100x100"
+        - else
+          = image_tag "default-avatar.png", class: "avatar_picture", size:  "100x100"
+  - if Comment.where(task_id: @task.id).exists?
+    .comments
+      %h3 Comments 
+      - @comments.each do |comment|
+        .comment
+          .comment_content
+            = comment.content
+          .commenter 
+            - commenter = User.find(comment.user_id)
+            = link_to user_profile_path(commenter) do
+              - if commenter.profile.present? && commenter.profile.user_image.attached?
+                = image_tag commenter.profile.user_image, class: "avatar_picture", size: "50x50"
+              - else
+                = image_tag "default-avatar.png", class: "avatar_picture", size: "50x50"
+            - if commenter.id == current_user.id 
+              = link_to task_comment_path(@task.id, comment),data:{method: :delete, confirm: '本当に削除しますか?' } do
+                %i.fa.fa-trash{ aria: { hidden: "true" } }
+
+  .new_comment 
+    = link_to  new_task_comment_path(@task) do
+      %h3 +Add new comment
+
+
+      
+
+
+
+
+
