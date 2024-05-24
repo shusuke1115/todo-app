@@ -1,5 +1,6 @@
 .container
   %h1 New Comment 
+  = render 'layouts/errors_messages', model: @comment
   = form_with(model:  [@task, @comment], url: task_comments_path, local: true) do |f|
     .comment_content 
       = f.text_area :content, class: 'content'

@@ -1,14 +1,14 @@
 .task_title 
-  = f.label :title, class: 'control_label'
-  = f.text_field :title, class: 'text'
+  = f.label :title,"タイトル (4~40文字)" , class: 'control_label'
+  = f.text_field :title,class: 'text'
 .task_content
-  = f.label :content, class: 'control_label'
+  = f.label :content, "内容 (10文字以上)" ,class: 'control_label'
   = f.text_area :content, class: 'content'
 .task_limit 
-  = f.label :limit, class: 'control_label'
+  = f.label :limit,"期限", class: 'control_label'
   = f.date_select :limit, class: 'date'
 .task_image 
-  = f.label :image
+  = f.label :image, "写真"
   = f.attachment_field :image
 .actions
   = f.submit "Submit", class: 'submit'

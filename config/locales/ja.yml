@@ -1,7 +1,26 @@
 ja:
   enums:
-      user:
-        gender:
-          other: その他
-          male: 男性
-          female: 女性
+    user:
+      gender:
+        other: その他
+        male: 男性
+        female: 女性
+  activerecord:
+    models:
+      task: タスク
+      board: ボード
+      comment: コメント
+    attributes:
+      task:
+        title: タイトル
+        content: 内容
+      board: 
+        title: タイトル
+        content: 内容
+      comment:
+        content: 内容
+    errors:
+      messages:
+        blank: "を入力してください"
+        too_short: "は%{count}文字以上で入力してください"
+        too_long: "は%{count}文字以内で入力してください"

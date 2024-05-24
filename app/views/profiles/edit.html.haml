@@ -1,20 +1,21 @@
 .container 
   %h1 Edit Profile
+  = render 'layouts/errors_messages', model: @profile
   = form_with(model: @profile, url: user_profile_path,method:'put', local: true) do |f|
     .profile_nickname
-      = f.label :nickname, class: 'control_label'
+      = f.label :nickname,"ニックネーム (20文字以内)", class: 'control_label'
       = f.text_field :nickname, class: 'text'
     .profile_image
-      = f.label :user_character_image, class: 'control_label'
+      = f.label :user_character_image,"自分の写真", class: 'control_label'
       = f.file_field :user_image, class: 'text'
     .profile_age
-      = f.label :age, class: 'control_label'
+      = f.label :age,"年齢", class: 'control_label'
       = f.number_field :age, class: 'text'
     .profile_birthday 
-      = f.label :date_of_birth, class: 'control_label'
+      = f.label :date_of_birth,"生年月日", class: 'control_label'
       = f.date_field :birthday, class: 'text'
     .profile_gender
-      = f.label :gender, class: 'control_label'
+      = f.label :gender,"性別", class: 'control_label'
       = f.select :gender, Profile.genders.keys,{},{class:'text' }
     .actions
       = f.submit "Submit", class: 'submit'

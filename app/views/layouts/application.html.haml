@@ -34,7 +34,7 @@
     - if flash.present?
       .flash
         - flash.each do |key, value|
-          %div{class: key}
+          .alert{ class: "alert-#{key}" }
             = value
 
     = yield

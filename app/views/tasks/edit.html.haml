@@ -1,4 +1,6 @@
 .container 
   %h1 Edit Task 
+
+  = render 'layouts/errors_messages', model: @task
   = form_with(model: @task,url: board_task_path, local: true) do |f|
     = render 'form', f: f

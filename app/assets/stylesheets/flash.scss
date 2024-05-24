@@ -2,16 +2,17 @@
   border-radius: 5px;
   padding: 16px 24px;
   margin: 16px 0px;
-}
 
-.flash.notice {
+  .alert-notice{
   background-color: #bcdfff;
   color: #0067C0;
   border: solid 1px #0067C0;
+  }
+
+  .alert-error{
+    background-color: #ffd4d1;
+    color: #930403;
+    border: solid 1px #930403;
+  }
 }
 
-.flash.error {
-  background-color: #ffd4d1;
-  color: #930403;
-  border: solid 1px #930403;
-}
