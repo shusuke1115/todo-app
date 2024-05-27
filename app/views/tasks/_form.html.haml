@@ -9,6 +9,6 @@
   = f.date_select :limit, class: 'date'
 .task_image 
   = f.label :image, "写真"
-  = f.attachment_field :image
+  = f.file_field :image
 .actions
   = f.submit "Submit", class: 'submit'
