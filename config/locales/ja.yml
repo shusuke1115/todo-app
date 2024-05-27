@@ -5,6 +5,9 @@ ja:
         other: その他
         male: 男性
         female: 女性
+  date:
+    date:
+      order: [ :year, :month, :day ]
   activerecord:
     models:
       task: タスク
