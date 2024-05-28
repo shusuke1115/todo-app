@@ -6,7 +6,7 @@
       .task 
         .task_image 
           - if task.image_id.present?
-            = image_tag attachment_url(task, :image)
+            = image_tag task.image_id
         .task_top
           .title 
             %h3  #{task.title }

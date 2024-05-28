@@ -12,8 +12,8 @@
               = link_to 'delete', board_task_path(@task.board_id, @task), data: { method: :delete, confirm: "本当に削除しますか?" }
   .content_show
     .task_image 
-      - if @task.image_id.present?
-        = image_tag attachment_url(@task, :image)
+      - if @task.image_id.present? && @task.image_id.attached?
+        = image_tag @task.image_id  
     = @task.content
     .limit 
       %p 締め切り日 #{@task.limit}
